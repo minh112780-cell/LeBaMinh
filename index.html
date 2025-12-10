@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCity Master - Siêu Thị Phụ Tùng & Spa Xe Hơi 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt" style="color: var(--primary)"></i>
+                AutoCity<span>Master</span>
+            </a>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Tìm kiếm phụ tùng, số VIN, mẫu xe...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <button id="loginBtn" class="btn btn-primary">
+                <i class="fas fa-user"></i> <span id="loginText">Đăng nhập B2B</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80')">
+            </div>
+            <div class="slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1920&q=80')">
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 id="heroTitle">Kho Phụ Tùng &<br>Spa Xe Số 1 Thành Phố</h1>
+            <p>Giải pháp toàn diện từ xe xăng truyền thống đến kỷ nguyên xe điện.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView()">Đặt Lịch
+                Ngay</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section container">
+        <h2 class="section-title">Danh Mục Phổ Biến</h2>
+
+        <!-- Filter Tabs -->
+        <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap;">
+            <button class="btn filter-btn active" data-filter="all"
+                style="background: var(--bg-card); color: white;">Tất Cả</button>
+            <button class="btn filter-btn" data-filter="ev" style="background: var(--bg-card); color: white;">Phụ Tùng
+                Xe Điện</button>
+            <button class="btn filter-btn" data-filter="traditional"
+                style="background: var(--bg-card); color: white;">Xe Truyền Thống</button>
+            <button class="btn filter-btn" data-filter="best-seller"
+                style="background: var(--bg-card); color: white; border: 1px solid var(--primary);">Top Bán Chạy
+                🔥</button>
+        </div>
+
+        <div id="productGrid" class="product-grid">
+            <!-- Products will be injected via JS -->
+        </div>
+    </section>
+
+    <!-- Service Booking -->
+    <section id="services" class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Đặt Lịch Dịch Vụ 4.0</h2>
+            <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label>Loại Xe</label>
+                    <select class="form-control" required>
+                        <option value="">Chọn loại xe...</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV/Crossover</option>
+                        <option value="pickup">Bán tải</option>
+                        <option value="ev">Xe điện (VinFast, Tesla...)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Dịch Vụ Mong Muốn</label>
+                    <select class="form-control" id="serviceType" required>
+                        <option value="">Chọn dịch vụ...</option>
+                        <option value="bao_duong" data-time="60">Bảo dưỡng định kỳ</option>
+                        <option value="rua_xe" data-time="45">Spa & Rửa xe chi tiết</option>
+                        <option value="do_den" data-time="180">Độ đèn Bi-Laser</option>
+                        <option value="dan_phim" data-time="120">Dán phim cách nhiệt</option>
+                        <option value="pin_ev" data-time="240">Kiểm tra & Thay pin EV</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ngày Giờ Dự Kiến</label>
+                    <input type="datetime-local" class="form-control" required>
+                </div>
+
+                <div id="timeEstimate" class="time-estimate">
+                    <i class="fas fa-clock"></i> Thời gian hoàn thành dự kiến: <span id="estimatedTime">--</span> phút
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    Xác Nhận Đặt Lịch
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about-section container">
+        <h2 class="section-title">Về Chúng Tôi</h2>
+        <div class="about-content">
+            <p>"Tự hào là <strong>AutoCity Master</strong> - trái tim của hệ sinh thái ô tô thành phố, chúng tôi không
+                chỉ bán phụ tùng, chúng tôi cung cấp giải pháp vận hành hoàn hảo. Từ con ốc vít nhỏ nhất cho xe tải
+                đường dài đến những khối pin công nghệ cao cho xe điện thời thượng, kho hàng của chúng tôi là minh chứng
+                cho sự đa dạng và quy mô không đối thủ. Với sứ mệnh tiên phong chuyển đổi số 4.0, AutoCity Master cam
+                kết mang đến trải nghiệm mua sắm sành điệu, minh bạch và đẳng cấp. Dù bạn là chủ Gara cần nguồn hàng gốc
+                hay chủ xe yêu xe như con, chúng tôi luôn ở đây để nâng tầm xế yêu của bạn. <strong>AutoCity Master - Vị
+                    thế số 1, Chất lượng dẫn đầu.</strong>"</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>AutoCity Master</h3>
+                <p style="color: #888; margin-top: 10px;">Hệ thống cung ứng phụ tùng & Chăm sóc xe số 1.</p>
+            </div>
+            <div>
+                <h4>Liên Hệ</h4>
+                <p style="color: #888;">Hotline: 1900 8888</p>
+                <p style="color: #888;">Email: support@autocity.vn</p>
+            </div>
+            <div>
+                <h4>Kết Nối</h4>
+                <div class="socials">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; color: #555; font-size: 0.9rem;">
+            &copy; 2025 AutoCity Master. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
